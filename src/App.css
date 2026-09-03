@@ -1,0 +1,594 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background:#ececec;
+}
+
+.app{
+  min-height:100vh;
+}
+
+/* Top Bar */
+
+.topbar{
+  background:#B71C1C;
+  color:#fff;
+  padding:18px 30px;
+  font-size:34px;
+  font-weight:300;
+}
+
+.logo span{
+  font-weight:600;
+}
+
+/* Layout */
+
+.container{
+  display:flex;
+  gap:40px;
+  padding:35px;
+  align-items:flex-start;
+}
+
+.left-section{
+  flex:1;
+}
+
+.right-card{
+  width:320px;
+  background:#fff;
+  border:1px solid #d9d9d9;
+}
+
+/* OneDrive */
+
+.onedrive-card{
+  background: #B71C1C;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:28px;
+  border-radius:4px;
+  margin-bottom:35px;
+}
+
+.cloud{
+  font-size:60px;
+}
+
+.onedrive-card h2{
+  font-weight:400;
+  font-size:34px;
+}
+
+.onedrive-card p{
+  font-size:22px;
+}
+
+/* Explorer */
+
+.explorer-card{
+  background:#fff;
+  border-radius:4px;
+  padding:24px;
+  margin-top: -30px;
+}
+
+.explorer-card h2{
+  margin-bottom:20px;
+  font-weight:500;
+}
+
+.file-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid #eee;
+  padding:28px 0;
+}
+
+.file-info{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.pdf-icon {
+  position: relative;
+  width: 42px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-file {
+  color: #d93025;
+  font-size: 42px;
+}
+
+.pdf-download {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  color: #d93025;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  padding: 1px;
+}
+
+.file-info h3{
+  font-size:22px;
+  font-weight:400;
+}
+
+.file-info span{
+  color:#666;
+}
+
+.view-btn {
+  border: none;
+  background: transparent;
+  color: #B71C1C;          /* Microsoft-style blue */
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  display: inline;
+  transition: color 0.2s ease;
+}
+
+.view-btn:hover {
+  color: #B71C1C;
+  text-decoration-thickness: 2px;
+}
+
+.view-btn:active {
+  color: #B71C1C;
+}
+
+.view-btn:focus-visible {
+  outline: 2px solid #B71C1C;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.download-row{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:20px;
+  border-top:1px solid #eee;
+}
+
+.download-btn {
+  border: none;
+  background: transparent;
+  color: #B71C1C;          /* Microsoft-style blue */
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  display: inline;
+  transition: color 0.2s ease;
+}
+
+.download-btn:hover {
+  color: #B71C1C;
+  text-decoration-thickness: 2px;
+}
+
+.download-btn:active {
+  color: #B71C1C;
+}
+
+.download-btn:focus-visible {
+  outline: 2px solid #B71C1C;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Outlook */
+
+.outlook-header{
+  background:#B71C1C;
+  color:white;
+  text-align:center;
+  padding:45px 20px;
+}
+
+.outlook-icon{
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+.outlook-header h2{
+  font-weight:300;
+  font-size:38px;
+}
+
+.outlook-header p{
+  margin-top:12px;
+  opacity:.9;
+}
+
+.outlook-footer{
+  padding:25px;
+  color:#555;
+  line-height:2;
+}
+
+/* Modal */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center; /* centers vertically */
+
+  padding: 24px;
+  z-index: 1000;
+}
+
+.modal {
+  width: min(500px, 100%); /* narrower modal */
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: popup 0.25s ease;
+}
+
+@keyframes popup{
+  from{
+    transform:scale(.95);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.modal h2{
+  margin-bottom:20px;
+  font-weight:500;
+  color:#B71C1C;
+}
+
+.modal label{
+  display:block;
+  margin-top:16px;
+  margin-bottom:8px;
+  font-size:22px;
+}
+
+.modal input[type=email],
+.modal input[type=password]{
+  width:100%;
+  padding:10px;
+  border:1px solid #aaa;
+  border-radius:3px;
+  font-size:20px;
+}
+
+.modal small{
+  display:block;
+  margin-top:8px;
+  color:#666;
+}
+
+.encryption{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:red;
+  font-size:20px;
+  margin-top:24px;
+}
+
+.divider{
+  height:1px;
+  background:#ddd;
+  margin:25px 0;
+}
+
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+}
+
+.cancel{
+  background:#f3f3f3;
+  border:none;
+  padding:12px 24px;
+  cursor:pointer;
+}
+
+.submit{
+  background:#B71C1C;
+  color:#fff;
+  border:none;
+  padding:14px 26px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.tip{
+  margin-top:30px;
+  color:#555;
+}
+
+.copyright{
+  margin-top:10px;
+  color:#444;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+  .container{
+    flex-direction:column;
+  }
+
+  .right-card{
+    width:100%;
+  }
+
+  .modal{
+    width:95%;
+  }
+
+  .topbar{
+    font-size:26px;
+  }
+
+}
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .topbar {
+    padding: 16px 24px;
+    font-size: 28px;
+  }
+
+  .container {
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding: 25px;
+  }
+
+  .left-section {
+    width: 100%;
+  }
+
+  .right-card {
+    width: 100%;
+    flex: none;
+  }
+
+  .explorer-card {
+    margin-top: -25px;
+  }
+
+  .outlook-header {
+    padding: 35px 20px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 15px 18px;
+
+    font-size: 23px;
+  }
+
+  .container {
+    padding: 16px;
+
+    gap: 20px;
+  }
+
+  .onedrive-card {
+    padding: 20px;
+
+    margin-bottom: 25px;
+  }
+
+  .onedrive-card p {
+    font-size: 17px;
+  }
+
+  .explorer-card {
+    padding: 18px;
+
+    margin-top: -18px;
+  }
+
+  .explorer-card h2 {
+    font-size: 22px;
+  }
+
+  .file-row {
+    padding: 20px 0;
+
+    gap: 10px;
+  }
+
+  .file-info {
+    gap: 11px;
+  }
+
+  .pdf-icon {
+    width: 36px;
+    min-width: 36px;
+    height: 42px;
+  }
+
+  .pdf-file {
+    font-size: 36px;
+  }
+
+  .pdf-download {
+    font-size: 13px;
+  }
+
+  .file-info h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .file-info span {
+    font-size: 14px;
+  }
+
+  .view-btn {
+    font-size: 17px;
+  }
+
+  .download-row {
+    padding-top: 16px;
+  }
+
+  .download-btn {
+    font-size: 17px;
+  }
+
+  .outlook-header {
+    padding: 30px 18px;
+  }
+
+  .outlook-icon {
+    font-size: 45px;
+  }
+
+  .outlook-header h2 {
+    font-size: 30px;
+  }
+
+  .outlook-footer {
+    padding: 20px;
+
+    font-size: 14px;
+  }
+
+  /* Modal */
+
+  .overlay {
+    padding: 12px;
+    align-items: center;
+  }
+
+  .modal {
+    width: 100%;
+
+    max-height: calc(100vh - 24px);
+
+    padding: 20px;
+
+    border-radius: 5px;
+  }
+
+  .modal h2 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .modal label {
+    font-size: 17px;
+  }
+
+  .modal input[type="email"],
+  .modal input[type="text"] {
+    padding: 13px;
+
+    font-size: 16px;
+  }
+
+  .encryption {
+    font-size: 15px;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .cancel,
+  .submit {
+    flex: 1;
+
+    padding: 12px 10px;
+  }
+
+  .tip {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+  .topbar {
+    font-size: 20px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .explorer-card {
+    padding: 14px;
+  }
+
+  .file-info h3 {
+    font-size: 14px;
+  }
+
+  .file-info span {
+    font-size: 12px;
+  }
+
+  .view-btn {
+    font-size: 15px;
+  }
+
+  .modal {
+    padding: 16px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel,
+  .submit {
+    width: 100%;
+  }
+}
