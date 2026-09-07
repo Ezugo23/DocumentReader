@@ -126,7 +126,7 @@ body{
 }
 
 .file-info h3{
-  font-size:22px;
+  font-size:20px;
   font-weight:400;
   color:#B71C1C;
 }
@@ -140,7 +140,7 @@ body{
   background: transparent;
   color: #B71C1C;          /* Microsoft-style blue */
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -176,7 +176,7 @@ body{
   background: transparent;
   color: #B71C1C;          /* Microsoft-style blue */
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -337,6 +337,69 @@ body{
   font-weight:400;
 }
 
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 48px 10px 10px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 20px;
+  outline: none;
+}
+
+.input-wrapper input:focus {
+  border-color: #B71C1C;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  padding: 4px;
+  margin: 0;
+
+  color: #666;
+  font-size: 24px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-btn:hover {
+  color: #B71C1C;
+}
+
+.form-status {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-status.error {
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+}
+
+.form-status.success {
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+}
+
 .tip{
   margin-top:30px;
   color:#555;
@@ -362,6 +425,11 @@ body{
   .modal{
     width:95%;
   }
+  .modal input[type="text"],
+.modal input[type="password"] {
+  padding: 13px 45px 13px 13px;
+  font-size: 16px;
+}
 
   .topbar{
     font-size:26px;
