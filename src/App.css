@@ -210,17 +210,17 @@ body{
 }
 
 .outlook-icon{
-  font-size:55px;
+  font-size:45px;
   margin-bottom:10px;
 }
 
 .outlook-header h2{
-  font-weight:300;
-  font-size:38px;
+  font-weight:200;
+  font-size:25px;
 }
 
 .outlook-header p{
-  margin-top:12px;
+  margin-top:10px;
   opacity:.9;
 }
 
